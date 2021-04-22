@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "917468840136",
+    "project_id": "indodaxdemo-98748",
+    "storage_bucket": "indodaxdemo-98748.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917468840136:android:f22ccd00a2f9dc4e7065fd",
+        "android_client_info": {
+          "package_name": "com.tr.indodaxdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "917468840136-hga4h7ruc6cea41900gq4a8pqp220k29.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkCQlatvFak-N8sm0YA9ZOgTfR6DToqRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "917468840136-hga4h7ruc6cea41900gq4a8pqp220k29.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
