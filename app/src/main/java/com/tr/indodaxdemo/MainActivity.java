@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new WalletFragment();
                     break;
                 case R.id.nav_profile:
-                    selectedFragment = new ProfileFragment();
+                    selectedFragment = new AccountFragment();
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getApplicationContext(),Login.class));
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         finish();
     }
 }

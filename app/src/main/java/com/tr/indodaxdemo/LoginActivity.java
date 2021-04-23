@@ -18,44 +18,34 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Register extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
-    EditText mFullname, mUsername, mPassword, mEmail;
-    Button mSignUpBtn;
-    TextView mLoginBtn;
-    FirebaseAuth fAuth;
+    EditText mEmail, mPassword;
+    Button mLoginBtn;
+    TextView mCreateBtn;
     ProgressBar progressBar;
+    FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_login);
 
-        mFullname = findViewById(R.id.fullName);
-        mUsername = findViewById(R.id.username);
-        mPassword = findViewById(R.id.password);
         mEmail = findViewById(R.id.email);
-        mSignUpBtn = findViewById(R.id.signUpBtn);
-        mLoginBtn = findViewById(R.id.createText);
-
+        mPassword = findViewById(R.id.password);
+        progressBar = findViewById(R.id.progressBar2);
         fAuth = FirebaseAuth.getInstance();
-        progressBar = findViewById(R.id.progressBar);
+        mLoginBtn = findViewById(R.id.loginBtn);
+        mCreateBtn = findViewById(R.id.createText);
 
-
-        //untuk ngecek apakah user sudah login sebelumnya
-        if (fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            finish();
-        }
-
-        mSignUpBtn.setOnClickListener(new View.OnClickListener(){
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)){
-                    mEmail.setError("Email can't be empty!");
+                    mEmail.setError("Username can't be empty!");
                     return;
                 }
 
@@ -70,18 +60,17 @@ public class Register extends AppCompatActivity {
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
-
-                //mendaftarkan user ke firebase
-
-                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                FirebaseAuth.getInstance().signOut();
+                //mengauthentikasi user
+                fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) {
-                            Toast.makeText(Register.this,"User Created.", Toast.LENGTH_SHORT).show();
+                        if (task.isSuccessful()) {
+                            Toast.makeText(LoginActivity.this,"Login Succes.", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                         }else {
-                            Toast.makeText(Register.this,"Error! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this,"Error! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     }
@@ -89,10 +78,10 @@ public class Register extends AppCompatActivity {
             }
         });
 
-        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+        mCreateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Login.class));
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
             }
         });
     }

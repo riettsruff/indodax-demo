@@ -18,34 +18,44 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Login extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
-    EditText mEmail, mPassword;
-    Button mLoginBtn;
-    TextView mCreateBtn;
-    ProgressBar progressBar;
+    EditText mFullname, mUsername, mPassword, mEmail;
+    Button mSignUpBtn;
+    TextView mLoginBtn;
     FirebaseAuth fAuth;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
 
-        mEmail = findViewById(R.id.email);
+        mFullname = findViewById(R.id.fullName);
+        mUsername = findViewById(R.id.username);
         mPassword = findViewById(R.id.password);
-        progressBar = findViewById(R.id.progressBar2);
-        fAuth = FirebaseAuth.getInstance();
-        mLoginBtn = findViewById(R.id.loginBtn);
-        mCreateBtn = findViewById(R.id.createText);
+        mEmail = findViewById(R.id.email);
+        mSignUpBtn = findViewById(R.id.signUpBtn);
+        mLoginBtn = findViewById(R.id.createText);
 
-        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+        fAuth = FirebaseAuth.getInstance();
+        progressBar = findViewById(R.id.progressBar);
+
+
+        //untuk ngecek apakah user sudah login sebelumnya
+        if (fAuth.getCurrentUser() != null){
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
+        }
+
+        mSignUpBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)){
-                    mEmail.setError("Username can't be empty!");
+                    mEmail.setError("Email can't be empty!");
                     return;
                 }
 
@@ -60,17 +70,18 @@ public class Login extends AppCompatActivity {
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
-                FirebaseAuth.getInstance().signOut();
-                //mengauthentikasi user
-                fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+                //mendaftarkan user ke firebase
+
+                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(Login.this,"Login Succes.", Toast.LENGTH_SHORT).show();
+                        if(task.isSuccessful()) {
+                            Toast.makeText(RegisterActivity.this,"User Created.", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                         }else {
-                            Toast.makeText(Login.this,"Error! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this,"Error! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     }
@@ -78,10 +89,10 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        mCreateBtn.setOnClickListener(new View.OnClickListener() {
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Register.class));
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             }
         });
     }
