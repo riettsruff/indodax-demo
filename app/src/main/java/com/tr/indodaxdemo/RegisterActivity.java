@@ -21,6 +21,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.tr.indodaxdemo.service.Asset;
+import com.tr.indodaxdemo.service.CurrencyFormat;
 
 import java.util.HashMap;
 
@@ -102,10 +104,13 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onSuccess(AuthResult authResult) {
                 HashMap<String, Object> map = new HashMap<>();
+//                map.put("id", fAuth.getCurrentUser().getUid());
                 map.put("full_name", fullname);
                 map.put("username", username);
                 map.put("email", email);
-                map.put("id", fAuth.getCurrentUser().getUid());
+                map.put("total_asset", Asset.get());
+                map.put("wallets", null);
+                map.put("transactions", null);
 
                 fRootRef.child("accounts").child(fAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
