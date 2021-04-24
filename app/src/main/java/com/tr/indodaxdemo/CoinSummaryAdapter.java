@@ -96,6 +96,9 @@ public class CoinSummaryAdapter extends RecyclerView.Adapter<CoinSummaryAdapter.
       String pairId = tickerId.replace("_", "");
       Ticker ticker = tickerEntry.getValue();
 
+      String[] arrOfTickerId = tickerId.split("_", 2);
+      if(!arrOfTickerId[1].equals("idr")) continue;
+
       Double lastPrice = 0.0;
       Double price24h = 0.0;
 
