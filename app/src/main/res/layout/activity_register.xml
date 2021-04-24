@@ -98,7 +98,7 @@
         android:backgroundTint="@color/button_background_color"
         android:fontFamily="@font/bungee_inline"
         android:text="@string/sign_up"
-         android:onClick="signUpBtnClicked"
+        android:onClick="signUpBtnClicked"
         app:layout_constraintBottom_toTopOf="@+id/createText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
