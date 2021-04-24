@@ -8,8 +8,8 @@ public class Account {
   private String email;
   private String password;
   private double total_asset;
-  private List<Wallet> wallet;
-  private List<Transaction> transaction;
+  private List<Wallet> wallets;
+  private List<Transaction> transactions;
 
   public String getFull_name() {
     return full_name;
@@ -51,19 +51,19 @@ public class Account {
     this.total_asset = total_asset;
   }
 
-  public List<Wallet> getWallet() {
-    return wallet;
+  public List<Wallet> getWallets() {
+    return wallets;
   }
 
-  public void setWallet(List<Wallet> wallet) {
-    this.wallet = wallet;
+  public void setWallets(List<Wallet> wallets) {
+    this.wallets = wallets;
   }
 
-  public List<Transaction> getTransaction() {
-    return transaction;
+  public List<Transaction> getTransactions() {
+    return transactions;
   }
 
-  public void setTransaction(List<Transaction> transaction) {
-    this.transaction = transaction;
+  public void setTransactions(List<Transaction> transactions) {
+    this.transactions = transactions;
   }
 }

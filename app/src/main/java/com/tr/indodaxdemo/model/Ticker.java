@@ -1,22 +1,13 @@
 package com.tr.indodaxdemo.model;
 
 public class Ticker {
-  private String id;
   private String high;
   private String low;
   private String vol_idr;
   private String last;
-  private String name;
   private String buy;
   private String sell;
-
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
+  private String name;
 
   public String getHigh() {
     return high;
@@ -50,14 +41,6 @@ public class Ticker {
     this.last = last;
   }
 
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
   public String getBuy() {
     return buy;
   }
@@ -72,5 +55,13 @@ public class Ticker {
 
   public void setSell(String sell) {
     this.sell = sell;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 }

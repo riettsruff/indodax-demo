@@ -1,24 +1,24 @@
 package com.tr.indodaxdemo.model;
 
-import java.util.ArrayList;
+import java.util.Map;
 
 public class Summaries {
-  private ArrayList<Ticker> tickers;
-  private ArrayList<Price24h> prices_24h;
+  private Map<String, Ticker> tickers;
+  private Map<String, String> prices_24h;
 
-  public ArrayList<Ticker> getTickers() {
+  public Map<String, Ticker> getTickers() {
     return tickers;
   }
 
-  public void setTickers(ArrayList<Ticker> tickers) {
+  public void setTickers(Map<String, Ticker> tickers) {
     this.tickers = tickers;
   }
 
-  public ArrayList<Price24h> getPrices_24h() {
+  public Map<String, String> getPrices_24h() {
     return prices_24h;
   }
 
-  public void setPrices_24h(ArrayList<Price24h> prices_24h) {
+  public void setPrices_24h(Map<String, String> prices_24h) {
     this.prices_24h = prices_24h;
   }
 }
