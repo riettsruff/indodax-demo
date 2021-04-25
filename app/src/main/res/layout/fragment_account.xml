@@ -34,8 +34,7 @@
             android:id="@+id/fullname_imageView"
             android:layout_width="48dp"
             android:layout_height="match_parent"
-            android:background="#DADADA"
-            tools:srcCompat="@drawable/ic_twotone_account_circle_24" />
+            android:src="@drawable/ic_twotone_account_circle_24" />
 
         <TextView
             android:id="@+id/fullname_textView"
@@ -69,10 +68,9 @@
             android:id="@+id/username_imageView"
             android:layout_width="48dp"
             android:layout_height="match_parent"
-            android:background="#DADADA"
             tools:layout_editor_absoluteX="53dp"
             tools:layout_editor_absoluteY="265dp"
-            tools:srcCompat="@drawable/ic_baseline_supervised_user_circle_24" />
+            android:src="@drawable/ic_baseline_supervised_user_circle_24" />
 
         <TextView
             android:id="@+id/username_textView"
@@ -120,11 +118,10 @@
             android:id="@+id/password_imageView"
             android:layout_width="48dp"
             android:layout_height="match_parent"
-            android:background="#DADADA"
             android:contentDescription="TODO"
             tools:layout_editor_absoluteX="25dp"
             tools:layout_editor_absoluteY="161dp"
-            tools:srcCompat="@drawable/ic_baseline_vpn_key_24" />
+            android:src="@drawable/ic_baseline_vpn_key_24" />
 
         <TextView
             android:id="@+id/password_textView"
@@ -155,10 +152,9 @@
             android:id="@+id/email_imageView"
             android:layout_width="48dp"
             android:layout_height="match_parent"
-            android:background="#DADADA"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="106dp"
-            tools:srcCompat="@drawable/ic_baseline_email_24" />
+            android:src="@drawable/ic_baseline_email_24" />
 
         <TextView
             android:id="@+id/email_textView"

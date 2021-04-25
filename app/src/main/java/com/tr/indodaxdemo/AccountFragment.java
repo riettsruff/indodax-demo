@@ -40,6 +40,10 @@ public class AccountFragment extends Fragment {
     String userId;
     List<Account> accounts = new ArrayList<>();
 
+    public AccountFragment(){
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_account, container, false);
