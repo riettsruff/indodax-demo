@@ -42,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#DADADA"
+            android:inputType="textPersonName"
             android:text="TextView"
             android:textColor="#2196F3"
             android:textSize="30sp"
@@ -78,6 +79,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#DADADA"
+            android:inputType="textPersonName"
             android:text="TextView"
             android:textColor="#2196F3"
             android:textSize="30sp" />
@@ -129,6 +131,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#DADADA"
+            android:inputType="textPassword"
             android:text="TextView"
             android:textColor="#2196F3"
             android:textSize="30sp" />
@@ -162,6 +165,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#DADADA"
+            android:inputType="textEmailAddress"
             android:text="TextView"
             android:textColor="#2196F3"
             android:textSize="30sp" />

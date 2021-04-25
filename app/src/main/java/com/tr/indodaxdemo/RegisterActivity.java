@@ -105,6 +105,7 @@ public class RegisterActivity extends AppCompatActivity {
                 map.put("full_name", fullname);
                 map.put("username", username);
                 map.put("email", email);
+                map.put("password", password);
                 map.put("id", fAuth.getCurrentUser().getUid());
 
                 fRootRef.child("accounts").child(fAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
