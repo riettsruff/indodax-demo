@@ -11,6 +11,16 @@ public class Account {
   private List<Wallet> wallets;
   private List<Transaction> transactions;
 
+  public Account() {
+  }
+
+  public Account(String full_name, String username, String email, String password) {
+      this.full_name = full_name;
+      this.username = username;
+      this.email = email;
+      this.password = password;
+  }
+
   public String getFull_name() {
     return full_name;
   }

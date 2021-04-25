@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 
@@ -48,7 +50,6 @@ public class AccountFragment extends Fragment {
         mUsername = v.findViewById(R.id.username_textView);
         mEmail = v.findViewById(R.id.email_textView);
         mPassword = v.findViewById(R.id.password_textView);
-        iProfle = v.findViewById(R.id.profile_imageView);
         iFullname = v.findViewById(R.id.fullname_imageView);
         iUsername = v.findViewById(R.id.username_imageView);
         iEmail = v.findViewById(R.id.email_imageView);
@@ -77,6 +78,12 @@ public class AccountFragment extends Fragment {
 
             }
         });
+
+//        ArrayList<String> list = new ArrayList<>();
+//        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.fragment_account, list);
+//        listView.setAdapter(adapter);
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("account");
 
 
         mProfile.setOnClickListener(new View.OnClickListener() {
