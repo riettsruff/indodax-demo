@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,19 +26,18 @@ import com.tr.indodaxdemo.model.Account;
 
 public class ProfileDetailFragment extends Fragment {
     private static final String TAG = ProfileDetailFragment.class.getSimpleName();
-    private EditText gFullName, gUsername, gEmail, gPassword;
+    EditText gFullName, gUsername, gEmail, gPassword;
     private Button gUpdateBtn;
     private DatabaseReference mFirebaseDatabase;
-
     private String userId;
+//    private DatabaseReference mFirebaseDatabase;
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_profile_detail,container,false);
-
+        View v = inflater.inflate(R.layout.fragment_profile_detail, container, false);
         Intent intent = getActivity().getIntent();
-
 
         gFullName = v.findViewById(R.id.fullName);
         gUsername = v.findViewById(R.id.username);
@@ -45,11 +45,9 @@ public class ProfileDetailFragment extends Fragment {
         gPassword = v.findViewById(R.id.password);
         gUpdateBtn = v.findViewById(R.id.updateBtn);
 
-
-
         FirebaseDatabase mFirebaseInstance = FirebaseDatabase.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance().getReference().child("accounts");
 
-        mFirebaseDatabase = mFirebaseInstance.getReference("accounts");
         mFirebaseInstance.getReference("app_title").setValue("Account Database");
 
         mFirebaseInstance.getReference("app_title").addValueEventListener(new ValueEventListener() {

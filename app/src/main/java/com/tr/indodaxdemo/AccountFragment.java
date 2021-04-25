@@ -2,6 +2,7 @@ package com.tr.indodaxdemo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,30 +20,37 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tr.indodaxdemo.model.Account;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 
 public class AccountFragment extends Fragment {
 
-    private TextView mProfile, mName, mFullname, mUsername, mEmail, mPassword;
-    private ImageView iProfle, iFullname, iUsername, iEmail, iPassword;
-    private String email, password;
-    private final String TAG = this.getClass().getName().toUpperCase();
-    private Map<String, String> userMap;
-    private FirebaseDatabase database;
-    private DatabaseReference userRef;
-    private static final String ACCOUNTS = "accounts";
-
-
+    TextView mProfile, mName, mFullname, mUsername, mEmail, mPassword;
+    ImageView iProfle, iFullname, iUsername, iEmail, iPassword;
+    String email, password;
+    static final String ACCOUNTS = "accounts";
+    final String TAG = this.getClass().getName().toUpperCase();
+    Map<String, String> userMap;
+    FirebaseDatabase mDatabase;
+    DatabaseReference databaseReference;
+    String userId;
+    List<Account> accounts = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_account,container,false);
+        View v = inflater.inflate(R.layout.fragment_account, container, false);
 
         Intent intent = getActivity().getIntent();
-        email = intent.getStringExtra("email");
+        email = intent.getStringExtra("email ");
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference accountRef = rootRef.child(ACCOUNTS);
+
+        Log.v("EMAILADD", accountRef.orderByChild("email").equalTo(email).toString());
 
         mProfile = v.findViewById(R.id.profile);
         mName = v.findViewById(R.id.name_textView);
@@ -56,17 +64,18 @@ public class AccountFragment extends Fragment {
         iPassword = v.findViewById(R.id.password_imageView);
 
 
-        database = FirebaseDatabase.getInstance();
-        userRef = database.getReference(ACCOUNTS);
+        mDatabase = FirebaseDatabase.getInstance();
+        accountRef = mDatabase.getReference("accounts");
 
-        userRef.addValueEventListener(new ValueEventListener() {
+        accountRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()){
-                    if (ds.child("email").getValue().equals(email)){
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if (ds.child("email").getValue().equals(email)) {
                         mName.setText(ds.child("full_name").getValue(String.class));
                         mFullname.setText(ds.child("full_name").getValue(String.class));
                         mUsername.setText(ds.child("username").getValue(String.class));
+                        mEmail.setText(email);
                         mEmail.setText(ds.child("email").getValue(String.class));
                         mPassword.setText(ds.child("password").getValue(String.class));
                     }
@@ -79,26 +88,18 @@ public class AccountFragment extends Fragment {
             }
         });
 
-//        ArrayList<String> list = new ArrayList<>();
-//        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.fragment_account, list);
-//        listView.setAdapter(adapter);
-
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("account");
-
 
         mProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ProfileDetailFragment profileDetailFragment = new ProfileDetailFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container,profileDetailFragment);
+                transaction.replace(R.id.fragment_container, profileDetailFragment);
                 transaction.commit();
             }
         });
 
         return v;
     }
-
 }
-
 
