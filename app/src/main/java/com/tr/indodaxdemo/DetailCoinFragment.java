@@ -34,7 +34,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DetailCoinFragment extends Fragment {
-  View detailCoinFragment;
+  static View detailCoinFragment;
+  static Ticker ticker;
   ViewPager viewPagerMenuContent;
   TabLayout detailCoinTabLayout;
 
@@ -132,7 +133,7 @@ public class DetailCoinFragment extends Fragment {
       public void onResponse(Call<TickerMap> call, Response<TickerMap> tickerMapResponse) {
         if(tickerMapResponse.isSuccessful()) {
           TickerMap tickerMap = tickerMapResponse.body();
-          Ticker ticker = tickerMap.getTicker();
+          ticker = tickerMap.getTicker();
 
           lastPriceValue.setText(
             CurrencyFormat.format(
@@ -168,46 +169,6 @@ public class DetailCoinFragment extends Fragment {
 
           String UID = fAuth.getCurrentUser().getUid();
           DatabaseReference fWalletsRef = fAccountsRootRef.child(UID).child("wallets");
-
-          fWalletsRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-              List<Wallet> walletList = new ArrayList<>();
-
-              for(DataSnapshot ds : snapshot.getChildren()) {
-                walletList.add(ds.getValue(Wallet.class));
-              }
-
-              Boolean hasCoin = false;
-
-              for(Wallet wallet : walletList) {
-                if(wallet.getCoin_id().equals(getArguments().getString("pair_id"))) {
-                  Double total = wallet.getTotal_coins();
-                  Double last = Double.parseDouble(ticker.getLast());
-                  Double totalCoins = total * last;
-
-                  totalCoinsValue.setText(String.valueOf(total));
-                  totalRupiahValue.setText(
-                    CurrencyFormat
-                      .format(totalCoins, "in", "ID").replace("Rp", "")
-                  );
-
-                  hasCoin = true;
-                  break;
-                }
-              }
-
-              if(!hasCoin) {
-                totalCoinsValue.setText("0");
-                totalRupiahValue.setText("0");
-              }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-          });
         }
       }
 
