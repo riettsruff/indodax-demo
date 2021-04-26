@@ -1,7 +1,6 @@
 package com.tr.indodaxdemo;
 
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +22,11 @@ import java.util.Map;
 
 public class CoinSummaryAdapter extends RecyclerView.Adapter<CoinSummaryAdapter.ViewHolder> {
   private List<CoinSummary> coinSummaryList = new ArrayList<>();
+  private OnAdapterListener adapterListener;
 
-  public CoinSummaryAdapter(List<CoinSummary> coinSummaryList) {
+  public CoinSummaryAdapter(List<CoinSummary> coinSummaryList, OnAdapterListener adapterListener) {
     this.coinSummaryList = coinSummaryList;
+    this.adapterListener = adapterListener;
   }
 
   @NonNull
@@ -62,6 +63,13 @@ public class CoinSummaryAdapter extends RecyclerView.Adapter<CoinSummaryAdapter.
 
       holder.coinPercentage.setText(coinSummary.getPercentage() + "%");
     }
+
+    holder.itemView.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        adapterListener.onClick(coinSummary);
+      }
+    });
   }
 
   @Override
@@ -116,6 +124,7 @@ public class CoinSummaryAdapter extends RecyclerView.Adapter<CoinSummaryAdapter.
         for(Pair pair : pairs) {
           if(pair.getId().equals(pairId)) {
             CoinSummary coinSummary = new CoinSummary();
+            coinSummary.setPair_id(pair.getId());
             coinSummary.setIcon(pair.getUrl_logo_png());
             coinSummary.setName(ticker.getName());
             coinSummary.setSymbol(pair.getTraded_currency_unit());
@@ -129,5 +138,9 @@ public class CoinSummaryAdapter extends RecyclerView.Adapter<CoinSummaryAdapter.
     }
 
     notifyDataSetChanged();
+  }
+
+  interface OnAdapterListener {
+    void onClick(CoinSummary coinSummary);
   }
 }

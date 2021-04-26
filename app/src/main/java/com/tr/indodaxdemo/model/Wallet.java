@@ -1,15 +1,15 @@
 package com.tr.indodaxdemo.model;
 
 public class Wallet {
-  private String coid_id;
+  private String coin_id;
   private double total_coins;
 
-  public String getCoid_id() {
-    return coid_id;
+  public String getCoin_id() {
+    return coin_id;
   }
 
-  public void setCoid_id(String coid_id) {
-    this.coid_id = coid_id;
+  public void setCoin_id(String coin_id) {
+    this.coin_id = coin_id;
   }
 
   public double getTotal_coins() {

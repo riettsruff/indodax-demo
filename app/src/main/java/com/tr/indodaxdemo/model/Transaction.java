@@ -1,11 +1,10 @@
 package com.tr.indodaxdemo.model;
 
-import java.util.Date;
-
 public class Transaction {
   private String coin_id;
-  private Date date;
-  private double price;
+  private String date;
+  private double total_coins;
+  private double total_rupiah;
 
   public String getCoin_id() {
     return coin_id;
@@ -15,19 +14,27 @@ public class Transaction {
     this.coin_id = coin_id;
   }
 
-  public Date getDate() {
+  public String getDate() {
     return date;
   }
 
-  public void setDate(Date date) {
+  public void setDate(String date) {
     this.date = date;
   }
 
-  public double getPrice() {
-    return price;
+  public double getTotal_coins() {
+    return total_coins;
   }
 
-  public void setPrice(double price) {
-    this.price = price;
+  public void setTotal_coins(double total_coins) {
+    this.total_coins = total_coins;
+  }
+
+  public double getTotal_rupiah() {
+    return total_rupiah;
+  }
+
+  public void setTotal_rupiah(double total_rupiah) {
+    this.total_rupiah = total_rupiah;
   }
 }
