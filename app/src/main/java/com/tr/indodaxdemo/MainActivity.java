@@ -75,8 +75,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         finish();
     }
-
-    public void update(View view) {
-
-    }
 }

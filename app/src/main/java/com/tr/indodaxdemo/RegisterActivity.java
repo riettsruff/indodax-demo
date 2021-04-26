@@ -104,7 +104,6 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onSuccess(AuthResult authResult) {
                 HashMap<String, Object> map = new HashMap<>();
-//                map.put("id", fAuth.getCurrentUser().getUid());
                 map.put("full_name", fullname);
                 map.put("username", username);
                 map.put("email", email);
