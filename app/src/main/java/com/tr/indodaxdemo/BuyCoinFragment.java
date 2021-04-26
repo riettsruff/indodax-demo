@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.tr.indodaxdemo.R;
+
 public class BuyCoinFragment extends Fragment {
   View buyCoinFragment;
   TextView coinSymbol;

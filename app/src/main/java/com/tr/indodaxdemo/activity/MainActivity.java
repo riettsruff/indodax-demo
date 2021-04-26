@@ -1,9 +1,8 @@
-package com.tr.indodaxdemo;
+package com.tr.indodaxdemo.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +10,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.tr.indodaxdemo.AccountFragment;
+import com.tr.indodaxdemo.HomeFragment;
+import com.tr.indodaxdemo.R;
+import com.tr.indodaxdemo.WalletFragment;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseAuth fAuth;

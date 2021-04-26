@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.tr.indodaxdemo.R;
+import com.tr.indodaxdemo.TransactionHistoryAdapter;
 import com.tr.indodaxdemo.model.Transaction;
 
 import java.util.ArrayList;

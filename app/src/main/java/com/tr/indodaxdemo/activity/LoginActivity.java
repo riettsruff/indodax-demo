@@ -1,4 +1,4 @@
-package com.tr.indodaxdemo;
+package com.tr.indodaxdemo.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.tr.indodaxdemo.R;
 
 public class LoginActivity extends AppCompatActivity {
 

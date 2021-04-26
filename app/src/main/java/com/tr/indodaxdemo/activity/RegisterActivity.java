@@ -1,4 +1,4 @@
-package com.tr.indodaxdemo;
+package com.tr.indodaxdemo.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,8 +21,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.tr.indodaxdemo.R;
 import com.tr.indodaxdemo.service.Asset;
-import com.tr.indodaxdemo.service.CurrencyFormat;
 
 import java.util.HashMap;
 

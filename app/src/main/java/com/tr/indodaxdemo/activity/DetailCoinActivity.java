@@ -1,4 +1,4 @@
-package com.tr.indodaxdemo;
+package com.tr.indodaxdemo.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.tr.indodaxdemo.BuyCoinFragment;
+import com.tr.indodaxdemo.DetailCoinFragment;
+import com.tr.indodaxdemo.R;
 
 public class DetailCoinActivity extends AppCompatActivity {
   FirebaseAuth fAuth;

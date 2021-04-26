@@ -5,40 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main_layout"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <FrameLayout
-<<<<<<< HEAD
       android:id="@+id/fragment_container"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_above="@+id/bottom_navigation"
       tools:layout_editor_absoluteX="0dp"
       tools:layout_editor_absoluteY="-93dp" />
-=======
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_navigation"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-93dp" />
 
-<!--    <Button-->
-<!--        android:id="@+id/button"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="24dp"-->
-<!--        android:layout_marginEnd="24dp"-->
-<!--        android:backgroundTint="@color/button_background_color"-->
-<!--        android:onClick="logout"-->
-<!--        android:text="@string/logout"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.501"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
-
-
->>>>>>> a3a2db7176165d7e85b6783f3485c39c187bdb70
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -49,7 +25,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation"
         android:background="?android:attr/windowBackground"
-        app:itemIconTint="#2196F3"
-        />
+        app:itemIconTint="#2196F3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
